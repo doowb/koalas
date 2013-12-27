@@ -123,6 +123,21 @@ describe('koalas', function() {
 	    	.value();
 	    expect(actual).to.eql(expected);
 	  });
+
+	  it('should return value from function on the provided objects', function() {
+	    var expected = 'bar';
+	    var getFoo = function() { return this.foo };
+
+	    var actual = koalas(
+	    		{ foo: null, getFoo: getFoo },
+	    		{ foo: undefined, getFoo: getFoo },
+	    		{ foo: 'bar', getFoo: getFoo },
+	    		{ foo: 'baz', getFoo: getFoo })
+	    	.use(func('getFoo'))
+	    	.value();
+
+	    expect(actual).to.eql(expected);
+	  });
 	
 	});
   
