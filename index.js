@@ -16,13 +16,24 @@ var create = function(args) {
 };
 
 var Koalas = function() {
-	this.args = slice.call(arguments, 0);
+	this.args = slice.call(arguments);
 	this.funcs = [];
 	this.funcs.push(noop);
 };
 
 var koalas = module.exports = function() {
 	return create([ Koalas ].concat(slice.call(arguments)));
+};
+
+koalas.coalesce = function() {
+	var args = slice.call(arguments);
+	for (var i = 0; i < args.length; i++) {
+		var arg = args[i];
+		if (typeof arg !== 'undefined' && arg !== null) {
+			return arg;
+		}
+	}
+	return null;
 };
 
 Koalas.prototype.use = function (func) {

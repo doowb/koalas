@@ -10,6 +10,28 @@ var dir = path.join.bind(__dirname);
 
 describe('koalas', function() {
 
+	describe('coalesce', function() {
+	
+	  it('should return the first value', function() {
+	    var expected = 'foo';
+	    var actual = koalas.coalesce('foo', 'bar', 'baz', null, undefined);
+	    expect(actual).to.eql(expected);
+	  });
+
+		it('should return the second value when first is null', function() {
+	    var expected = 'foo';
+	    var actual = koalas.coalesce(null, 'foo', 'bar', 'baz', undefined);
+	    expect(actual).to.eql(expected);
+	  });
+
+	  it('should return the second value when first is undefined', function() {
+	    var expected = 'foo';
+	    var actual = koalas.coalesce(undefined, 'foo', 'bar', 'baz', null);
+	    expect(actual).to.eql(expected);
+	  });
+
+	});
+
 	describe('simple strings', function() {
 
 	  it('should return the first value', function() {
