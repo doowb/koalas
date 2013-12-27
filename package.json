@@ -1,0 +1,28 @@
+{
+  "name": "koalas",
+  "version": "0.0.1",
+  "description": "Koalas is a library for doing a coalesce in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doowb/koalas.git"
+  },
+  "keywords": [
+    "isnull",
+    "koalas",
+    "koala",
+    "null",
+    "undefined"
+  ],
+  "author": "Brian Woodward",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doowb/koalas/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2"
+  }
+}
