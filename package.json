@@ -23,6 +23,7 @@
     "url": "https://github.com/doowb/koalas/issues"
   },
   "devDependencies": {
-    "mocha": "~1.16.2"
+    "mocha": "~1.16.2",
+    "chai": "~1.8.1"
   }
 }
