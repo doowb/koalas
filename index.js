@@ -27,11 +27,12 @@ var koalas = module.exports = function() {
 
 Koalas.prototype.use = function (func) {
 	this.funcs.push(func);
+	return this;
 };
 
 Koalas.prototype.process = function(value) {
 	var ret = value;
-	for (var i = 0; i < this.funcs; i++) {
+	for (var i = 0; i < this.funcs.length; i++) {
 		ret = this.funcs[i](ret);
 		if (typeof ret === 'undefined' || ret === null) {
 			break;
