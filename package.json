@@ -1,6 +1,6 @@
 {
   "name": "koalas",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Koalas is a library for doing a coalesce in JavaScript",
   "main": "index.js",
   "scripts": {
