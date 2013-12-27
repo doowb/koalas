@@ -4,7 +4,7 @@
   "description": "Koalas is a library for doing a coalesce in JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,12 @@
     "url": "https://github.com/doowb/koalas/issues"
   },
   "devDependencies": {
+    "chai": "~1.8.1",
+    "grunt": "~0.4.2",
     "mocha": "~1.16.2",
-    "chai": "~1.8.1"
+    "grunt-readme": "~0.4.0",
+    "grunt-mocha-test": "~0.8.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jshint": "~0.7.0"
   }
 }
