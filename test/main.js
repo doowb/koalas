@@ -86,5 +86,44 @@ describe('koalas', function() {
 	  });
 	
 	});
+
+	describe('advanced functions', function() {
+
+		var prop = function(key) {
+			return function(obj) {
+				return obj[key];
+			};
+		};
+
+		var func = function(key) {
+			return function(obj) {
+				return obj[key]();
+			};
+		};
+	
+	  it('should check property on object', function() {
+	    var expected = 'bar';
+	    var actual = koalas(
+	    		{ first: 'item' },
+	    		{ second: 'item' },
+	    		{ foo: 'bar' })
+	    	.use(prop('foo'))
+	    	.value();
+	    expect(actual).to.eql(expected);
+	  });
+
+	  it('should return property value on object when some other ones are null', function() {
+	    var expected = 'bar';
+	    var actual = koalas(
+	    		{ foo: null },
+	    		{ foo: undefined },
+	    		{ foo: 'bar' },
+	    		{ foo: 'baz' })
+	    	.use(prop('foo'))
+	    	.value();
+	    expect(actual).to.eql(expected);
+	  });
+	
+	});
   
 });
