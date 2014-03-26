@@ -6,25 +6,99 @@ Given a list of values, find the first one that isn't null or undefined.
 var value = koalas.coalesce('foo', 'bar', 'baz', null, undefined);
 ```
 
+### Simple Example 2
+
+Use something similar to lodash by passing your arguments directly into
+koalas and calling `value()` to get the first non null/undefined value.
+
+```js
+var value = koalas(null, undefined, 'foo', 'bar').value();
+```
+
+### Simple Example 3 - Array Argument
+
+Sometimes you want to use an array instead of passing all the arguments
+in.
+
+```js
+var pages = ['index.html', 'index.htm', 'default.html', 'default.htm'];
+
+var defaultPage = koalas.apply(null, pages).value();
+```
+
+### Use Method Example
+
+With the `use` method, pass in functions that will evaluate can evaluate
+each argument until a non null/undefined value is returned.
+
+```js
+var filter = function (value) {
+  if (value.indexOf('Brian') !== -1) {
+    return value;
+  }
+  return null;
+};
+
+var foo = koalas('Jon Schlinkert', 'Brian Woodward', 'Joe Developer').use(filter).value();
+```
+
+
 ### Find Valid Path Example
 
 This example returns the first path that exists.
 
 ```js
-var path = require('path');
-var resolve = path.resolve;
 var fs = require('fs');
-var dir = path.join.bind(__dirname);
+var exists = function (file) {
+  if (fs.existsSync(file)) {
+    return file;
+  }
+};
 
-var value = koalas(
-    resolve('some/path/to/nothing.js'),
-    resolve('another/path/to/nothing.js'),
-    resolve(dir('index.js')),
-    resolve(dir('package.json')))
-  .use(function(value) {
-    if(fs.existsSync(value)) {
-      return value;
-    }
-  })
-  .value();
+var pages = ['index.html', 'index.htm', 'default.html', 'default.htm'];
+var defaultPage = koalas.apply(null, pages).use(exists).value();
+```
+
+### Complex Example 1
+
+Find the first object that contains a specific property that is non
+null/undefined.
+
+```js
+var prop = function (key) {
+  return function (person) {
+    if (person && person[key])
+      return person;
+  };
+};
+
+var people = [
+  { first: 'Jon', last: 'Schlinkert' },
+  { first: 'Brian', middle: 'G', last: 'Woodward' },
+  { first: 'Joe', middle: 'S', last: 'Developer' }
+];
+
+var firstMiddle = koalas.apply(null, people).use(prop('middle')).value();
+```
+
+### Complex Example 2
+
+Find the first object that contains a method that returns a valid non
+null/undefined value.
+
+```js
+var func = function (key) {
+  return function (person) {
+    if (person && person[key] && person[key]())
+      return person;
+  };
+};
+
+var people = [
+  { age: function () { return this.dbo; }, first: 'Jon', last: 'Schlinkert' },
+  { age: function () { return this.dbo; }, first: 'Brian', middle: 'G', last: 'Woodward', dob: new Date('1979 SEP 07') },
+  { age: function () { return this.dbo; }, first: 'Joe', middle: 'S', last: 'Developer' }
+];
+
+var hasDOB = koalas.apply(null, people).use(func('age')).value();
 ```
