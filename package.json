@@ -26,9 +26,10 @@
     "chai": "~1.8.1",
     "grunt": "~0.4.2",
     "mocha": "~1.16.2",
-    "grunt-readme": "~0.4.0",
     "grunt-mocha-test": "~0.8.1",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-jshint": "~0.7.0"
+    "grunt-contrib-jshint": "~0.7.0",
+    "verb": "~0.1.22",
+    "grunt-verb": "0.0.5"
   }
 }

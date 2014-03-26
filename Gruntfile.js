@@ -11,12 +11,6 @@ module.exports = function(grunt) {
       }
     },
 
-    readme: {
-      options: {
-        boilerplate: 'node-util'
-      }
-    },
-
     /**
      * Run mocha tests.
      */
@@ -43,7 +37,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-readme');
+  grunt.loadNpmTasks('grunt-verb');
 
   // Tests to be run.
   grunt.registerTask('test', ['jshint', 'mochaTest']);
@@ -52,6 +46,6 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', ['test', 'watch']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'readme']);
+  grunt.registerTask('default', ['test', 'verb']);
 
 };
