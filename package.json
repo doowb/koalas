@@ -29,6 +29,6 @@
     "grunt-mocha-test": "~0.8.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-jshint": "~0.7.0",
-    "grunt-verb": "0.0.5"
+    "grunt-verb": "~0.0.5"
   }
 }
