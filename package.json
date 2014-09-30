@@ -21,7 +21,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha -R spec"
   },
   "keywords": [
     "chainable",
@@ -46,7 +46,7 @@
     "verb": ">= 0.2.6",
     "verb-tag-jscomments": ">= 0.2.0"
   },
-  "homepage": "https://github.com/jonschlinkert/koalas",
+  "homepage": "https://github.com/doowb/koalas",
   "engines": {
     "node": ">=0.10.0"
   }

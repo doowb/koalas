@@ -108,6 +108,27 @@ describe('koalas', function() {
       actual.should.eql(expected);
     });
 
+    it('should return the first data file path that exists', function() {
+      var expected = resolve(__dirname + '/package.json');
+      var actual = koalas(
+          resolve('some/path/to/nothing.js'),
+          resolve('another/path/to/nothing.js'),
+          resolve(__dirname + '/index.js'),
+          resolve(__dirname + '/package.json'))
+        .use(function(value) {
+          if(fs.existsSync(value)) {
+            return value;
+          }
+        })
+        .use(function (value) {
+          if (/\.json|\.yml|\.yaml^/.test(value)) {
+            return value;
+          }
+        })
+        .value();
+      actual.should.eql(expected);
+    });
+
   });
 
   describe('advanced functions', function() {
