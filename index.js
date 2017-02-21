@@ -1,67 +1,52 @@
 'use strict';
 
-var slice = Array.prototype.slice;
+/**
+ * Coalesce function to find the first valid value.
+ * A valid value is is on that is not undefined, not null and not NaN (not a number).
+ *
+ * ```js
+ * console.log(koalas(undefined, null, NaN, 'a', 'b'));
+ * //=> 'a'
+ *
+ * console.log(koalas(undefined, null, NaN, {a: 'b'}, 'b'));
+ * //=> {a: 'b'}
+ *
+ * console.log(koalas(undefined, null, NaN, ['a', 'b', 'c'], {a: 'b'}, 'b'));
+ * //=> ['a', 'b', 'c']
+ * ```
+ * @param {Mixed} `arguments` Pass in any amount of arguments.
+ * @return {Mixed} First valid value.
+ * @api public
+ */
 
-var noop = function(value) {
-  return value;
-};
-
-var create = function(args) {
-  var obj = args[0];
-  args = args.splice(1);
-
-  function F() {
-    return obj.apply(this, args);
-  }
-  F.prototype = obj.prototype;
-  return new F();
-};
-
-var Koalas = function() {
-  this.args = slice.call(arguments);
-  this.funcs = [];
-  this.funcs.push(noop);
-};
-
-Koalas.prototype.use = function(func) {
-  this.funcs.push(func);
-  return this;
-};
-
-Koalas.prototype.process = function(value) {
-  var ret = value;
-  for (var i = 0; i < this.funcs.length; i++) {
-    ret = this.funcs[i](ret);
-    if (typeof ret === 'undefined' || ret === null) {
-      break;
-    }
-  }
-  return ret;
-};
-
-Koalas.prototype.value = function() {
-  var ret = null;
-  for (var i = 0; i < this.args.length; i++) {
-    var arg = this.process(this.args[i]);
-    if (typeof arg !== 'undefined' && arg !== null) {
-      ret = arg;
-      break;
-    }
-  }
-  return ret;
-};
-
-var koalas = module.exports = function() {
-  return create([Koalas].concat(slice.call(arguments)));
-};
-
-koalas.coalesce = function() {
-  var args = slice.call(arguments);
-  for (var i = 0; i < args.length; i++) {
-    var arg = args[i];
-    if (typeof arg !== 'undefined' && arg !== null) {
+function koalas() {
+  var len = arguments.length;
+  for (var i = 0; i < len; i++) {
+    var arg = arguments[i];
+    if (hasValue(arg)) {
       return arg;
     }
   }
   return null;
-};
+}
+
+/**
+ * Check to see if a value actual has a valid value:
+ *  - not undefined
+ *  - not null
+ *  - not NaN (not a number)
+ *
+ * @param  {*} `val` value to check
+ * @return {Boolean} returns `true` if the `val` has a valid value
+ */
+
+function hasValue(val) {
+  // eslint-disable-next-line no-self-compare
+  return val != null && val === val;
+}
+
+/**
+ * Expose koalas
+ */
+
+module.exports = koalas;
