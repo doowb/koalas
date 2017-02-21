@@ -1,6 +1,7 @@
 'use strict';
 
-var should = require('should');
+require('mocha');
+var assert = require('assert');
 var koalas = require('./');
 
 var path = require('path');
@@ -16,19 +17,19 @@ describe('koalas', function() {
     it('should return the first value', function() {
       var expected = 'foo';
       var actual = koalas.coalesce('foo', 'bar', 'baz', null, undefined);
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the second value when first is null', function() {
       var expected = 'foo';
       var actual = koalas.coalesce(null, 'foo', 'bar', 'baz', undefined);
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the second value when first is undefined', function() {
       var expected = 'foo';
       var actual = koalas.coalesce(undefined, 'foo', 'bar', 'baz', null);
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
   });
@@ -38,19 +39,19 @@ describe('koalas', function() {
     it('should return the first value', function() {
       var expected = 'foo';
       var actual = koalas('foo', 'bar', 'baz', null, undefined).value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the second value when first is null', function() {
       var expected = 'foo';
       var actual = koalas(null, 'foo', 'bar', 'baz', undefined).value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the second value when first is undefined', function() {
       var expected = 'foo';
       var actual = koalas(undefined, 'foo', 'bar', 'baz', null).value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
   });
@@ -67,25 +68,25 @@ describe('koalas', function() {
     it('should return the first value', function() {
       var expected = 'foo';
       var actual = koalas('foo', 'bar', 'baz', null, undefined).use(func).value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the second value when first fails function test', function() {
       var expected = 'foo';
       var actual = koalas('bar', 'foo', 'baz', null, undefined).use(func).value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the second value when first is null', function() {
       var expected = 'foo';
       var actual = koalas(null, 'foo', 'bar', 'baz', undefined).use(func).value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the second value when first is undefined', function() {
       var expected = 'foo';
       var actual = koalas(undefined, 'foo', 'bar', 'baz', null).use(func).value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
   });
@@ -105,7 +106,7 @@ describe('koalas', function() {
           }
         })
         .value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return the first data file path that exists', function() {
@@ -126,7 +127,7 @@ describe('koalas', function() {
           }
         })
         .value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
   });
@@ -153,7 +154,7 @@ describe('koalas', function() {
           { foo: 'bar' })
         .use(prop('foo'))
         .value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return property value on object when some other ones are null', function() {
@@ -165,7 +166,7 @@ describe('koalas', function() {
           { foo: 'baz' })
         .use(prop('foo'))
         .value();
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
 
     it('should return value from function on the provided objects', function() {
@@ -180,7 +181,7 @@ describe('koalas', function() {
         .use(func('getFoo'))
         .value();
 
-      actual.should.eql(expected);
+      assert.equal(expected, actual);
     });
   });
 });
