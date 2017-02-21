@@ -1,6 +1,5 @@
 'use strict';
 
-
 var slice = Array.prototype.slice;
 
 var noop = function (value) {
