@@ -8,12 +8,8 @@ var path = require('path');
 var resolve = path.resolve;
 var fs = require('fs');
 
-var dir = path.join.bind(__dirname);
-
 describe('koalas', function() {
-
   describe('coalesce', function() {
-
     it('should return the first value', function() {
       var expected = 'foo';
       var actual = koalas.coalesce('foo', 'bar', 'baz', null, undefined);
@@ -31,11 +27,9 @@ describe('koalas', function() {
       var actual = koalas.coalesce(undefined, 'foo', 'bar', 'baz', null);
       assert.equal(expected, actual);
     });
-
   });
 
   describe('simple strings', function() {
-
     it('should return the first value', function() {
       var expected = 'foo';
       var actual = koalas('foo', 'bar', 'baz', null, undefined).value();
@@ -53,11 +47,9 @@ describe('koalas', function() {
       var actual = koalas(undefined, 'foo', 'bar', 'baz', null).value();
       assert.equal(expected, actual);
     });
-
   });
 
   describe('strings with functions', function() {
-
     var func = function(value) {
       if (value === 'foo') {
         return value;
@@ -88,11 +80,9 @@ describe('koalas', function() {
       var actual = koalas(undefined, 'foo', 'bar', 'baz', null).use(func).value();
       assert.equal(expected, actual);
     });
-
   });
 
   describe('file system', function() {
-
     it('should return the first file path that exists', function() {
       var expected = resolve(__dirname + '/index.js');
       var actual = koalas(
@@ -101,7 +91,7 @@ describe('koalas', function() {
           resolve(__dirname + '/index.js'),
           resolve(__dirname + '/package.json'))
         .use(function(value) {
-          if(fs.existsSync(value)) {
+          if (fs.existsSync(value)) {
             return value;
           }
         })
@@ -117,11 +107,11 @@ describe('koalas', function() {
           resolve(__dirname + '/index.js'),
           resolve(__dirname + '/package.json'))
         .use(function(value) {
-          if(fs.existsSync(value)) {
+          if (fs.existsSync(value)) {
             return value;
           }
         })
-        .use(function (value) {
+        .use(function(value) {
           if (/\.json|\.yml|\.yaml^/.test(value)) {
             return value;
           }
@@ -129,11 +119,9 @@ describe('koalas', function() {
         .value();
       assert.equal(expected, actual);
     });
-
   });
 
   describe('advanced functions', function() {
-
     var prop = function(key) {
       return function(obj) {
         return obj[key];

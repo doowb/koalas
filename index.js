@@ -2,11 +2,11 @@
 
 var slice = Array.prototype.slice;
 
-var noop = function (value) {
+var noop = function(value) {
   return value;
 };
 
-var create = function (args) {
+var create = function(args) {
   var obj = args[0];
   args = args.splice(1);
 
@@ -17,18 +17,18 @@ var create = function (args) {
   return new F();
 };
 
-var Koalas = function () {
+var Koalas = function() {
   this.args = slice.call(arguments);
   this.funcs = [];
   this.funcs.push(noop);
 };
 
-Koalas.prototype.use = function (func) {
+Koalas.prototype.use = function(func) {
   this.funcs.push(func);
   return this;
 };
 
-Koalas.prototype.process = function (value) {
+Koalas.prototype.process = function(value) {
   var ret = value;
   for (var i = 0; i < this.funcs.length; i++) {
     ret = this.funcs[i](ret);
@@ -39,7 +39,7 @@ Koalas.prototype.process = function (value) {
   return ret;
 };
 
-Koalas.prototype.value = function () {
+Koalas.prototype.value = function() {
   var ret = null;
   for (var i = 0; i < this.args.length; i++) {
     var arg = this.process(this.args[i]);
@@ -51,11 +51,11 @@ Koalas.prototype.value = function () {
   return ret;
 };
 
-var koalas = module.exports = function () {
+var koalas = module.exports = function() {
   return create([Koalas].concat(slice.call(arguments)));
 };
 
-koalas.coalesce = function () {
+koalas.coalesce = function() {
   var args = slice.call(arguments);
   for (var i = 0; i < args.length; i++) {
     var arg = args[i];
