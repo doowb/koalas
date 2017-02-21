@@ -1,27 +1,31 @@
 {
   "name": "koalas",
-  "version": "0.1.1",
   "description": "Coalesce for JavaScript",
-  "author": {
-    "name": "Brian Woodward",
-    "url": "https://github.com/doowb"
-  },
+  "version": "0.1.1",
+  "homepage": "https://github.com/doowb/koalas",
+  "author": "Brian Woodward (https://github.com/doowb)",
+  "contributors": [
+    "Brian Woodward <brian.woodward@gmail.com> (https://github.com/doowb)",
+    "Jon Schlinkert <jon.schlinkert@sellside.com> (http://twitter.com/jonschlinkert)"
+  ],
+  "repository": "doowb/koalas",
   "bugs": {
     "url": "https://github.com/doowb/koalas/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/doowb/koalas.git"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
+  "license": "MIT",
+  "files": [
+    "index.js"
   ],
   "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "^4.0.4"
   },
   "keywords": [
     "chainable",
@@ -39,15 +43,5 @@
     "utility",
     "utils",
     "value"
-  ],
-  "devDependencies": {
-    "mocha": "*",
-    "should": "^4.0.4",
-    "verb": ">= 0.2.6",
-    "verb-tag-jscomments": ">= 0.2.0"
-  },
-  "homepage": "https://github.com/doowb/koalas",
-  "engines": {
-    "node": ">=0.10.0"
-  }
+  ]
 }
