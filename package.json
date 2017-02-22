@@ -26,6 +26,7 @@
   "devDependencies": {
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-eslint": "^3.0.1",
+    "gulp-format-md": "^0.1.11",
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^3.0.1",
     "mocha": "^3.2.0"
@@ -46,5 +47,18 @@
     "utility",
     "utils",
     "value"
-  ]
+  ],
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    }
+  }
 }
