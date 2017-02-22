@@ -1,6 +1,6 @@
 # koalas [![NPM version](https://img.shields.io/npm/v/koalas.svg?style=flat)](https://www.npmjs.com/package/koalas) [![NPM monthly downloads](https://img.shields.io/npm/dm/koalas.svg?style=flat)](https://npmjs.org/package/koalas)  [![NPM total downloads](https://img.shields.io/npm/dt/koalas.svg?style=flat)](https://npmjs.org/package/koalas) [![Linux Build Status](https://img.shields.io/travis/doowb/koalas.svg?style=flat&label=Travis)](https://travis-ci.org/doowb/koalas) [![Windows Build Status](https://img.shields.io/appveyor/ci/doowb/koalas.svg?style=flat&label=AppVeyor)](https://ci.appveyor.com/project/doowb/koalas)
 
-> Coalesce for JavaScript
+> Coalesce for JavaScript. Returns the first value that is not undefined or null.
 
 ## Install
 
@@ -50,7 +50,7 @@ Pull requests and stars are always welcome. For bugs and feature requests, [plea
 
 | **Commits** | **Contributor** | 
 | --- | --- |
-| 22 | [doowb](https://github.com/doowb) |
+| 33 | [doowb](https://github.com/doowb) |
 | 1 | [jonschlinkert](https://github.com/jonschlinkert) |
 
 ### Building docs

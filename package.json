@@ -1,6 +1,6 @@
 {
   "name": "koalas",
-  "description": "Coalesce for JavaScript",
+  "description": "Coalesce for JavaScript. Returns the first value that is not undefined or null.",
   "version": "1.0.0",
   "homepage": "https://github.com/doowb/koalas",
   "author": "Brian Woodward (https://github.com/doowb)",
