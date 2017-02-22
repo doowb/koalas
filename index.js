@@ -2,7 +2,7 @@
 
 /**
  * Coalesce function to find the first valid value.
- * A valid value is is on that is not undefined, not null and not NaN (not a number).
+ * A valid value is one that is not undefined, not null and not NaN (not a number).
  *
  * ```js
  * console.log(koalas(undefined, null, NaN, 'a', 'b'));
