@@ -53,7 +53,7 @@ Pull requests and stars are always welcome. For bugs and feature requests, [plea
 
 | **Commits** | **Contributor** | 
 | --- | --- |
-| 35 | [doowb](https://github.com/doowb) |
+| 39 | [doowb](https://github.com/doowb) |
 | 1 | [jonschlinkert](https://github.com/jonschlinkert) |
 
 ### Building docs
