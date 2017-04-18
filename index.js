@@ -3,6 +3,7 @@
 /**
  * Coalesce function to find the first valid value.
  * A valid value is one that is not undefined, not null and not NaN (not a number).
+ * If no values are valid, then the last argument is returned.
  *
  * ```js
  * console.log(koalas(undefined, null, NaN, 'a', 'b'));
@@ -13,7 +14,11 @@
  *
  * console.log(koalas(undefined, null, NaN, ['a', 'b', 'c'], {a: 'b'}, 'b'));
  * //=> ['a', 'b', 'c']
+ *
+ * console.log(koalas(undefined, NaN, null));
+ * //=> null
  * ```
+ * @name koalas
  * @param {Mixed} `arguments` Pass in any amount of arguments.
  * @return {Mixed} First valid value.
  * @api public
@@ -21,17 +26,18 @@
 
 function koalas() {
   var len = arguments.length;
+  var arg;
   for (var i = 0; i < len; i++) {
-    var arg = arguments[i];
+    arg = arguments[i];
     if (hasValue(arg)) {
       return arg;
     }
   }
-  return null;
+  return arg;
 }
 
 /**
- * Check to see if a value actual has a valid value:
+ * Check to see if a value actually has a valid value:
  *  - not undefined
  *  - not null
  *  - not NaN (not a number)

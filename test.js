@@ -83,9 +83,8 @@ describe('koalas', function() {
     assert.deepEqual(actual, expected);
   });
 
-  it('should return null when nothing is valid', function() {
-    var expected = null;
+  it('should return last value when nothing is valid', function() {
     var actual = koalas(undefined, null, NaN);
-    assert.deepEqual(actual, expected);
+    assert(isNaN(actual));
   });
 });

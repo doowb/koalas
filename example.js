@@ -10,3 +10,6 @@ console.log(koalas(undefined, null, NaN, {a: 'b'}, 'b'));
 
 console.log(koalas(undefined, null, NaN, ['a', 'b', 'c'], {a: 'b'}, 'b'));
 //=> ['a', 'b', 'c']
+
+console.log(koalas(undefined, NaN, null));
+//=> null
